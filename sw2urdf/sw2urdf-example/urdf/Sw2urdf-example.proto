@@ -1,0 +1,229 @@
+#VRML_SIM R2025a utf8
+# license: Apache License 2.0
+# license url: http://www.apache.org/licenses/LICENSE-2.0
+# This is a proto file for Webots for the Sw2urdf-example
+# Extracted from: F:\cad designs\variable-dof-manipulator\sw2urdf\sw2urdf-example\urdf\sw2urdf-example.urdf
+
+PROTO Sw2urdf-example [
+  field  SFVec3f     translation     0 0 0
+  field  SFRotation  rotation        0 0 1 0
+  field  SFString    name            "Sw2urdf-example"  # Is `Robot.name`.
+  field  SFString    controller      "void"             # Is `Robot.controller`.
+  field  MFString    controllerArgs  []                 # Is `Robot.controllerArgs`.
+  field  SFString    customData      ""                 # Is `Robot.customData`.
+  field  SFBool      supervisor      FALSE              # Is `Robot.supervisor`.
+  field  SFBool      synchronization TRUE               # Is `Robot.synchronization`.
+  field  SFBool      selfCollision   FALSE              # Is `Robot.selfCollision`.
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    controller IS controller
+    controllerArgs IS controllerArgs
+    customData IS customData
+    supervisor IS supervisor
+    synchronization IS synchronization
+    selfCollision IS selfCollision
+    children [
+      Solid {
+        children [
+          Shape {
+            appearance DEF base_link_material PBRAppearance {
+              baseColor 0.501961 1.000000 1.000000
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF base_link Mesh {
+              url "F:/cad designs/variable-dof-manipulator/sw2urdf/sw2urdf-example/meshes/base_link.STL"
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0.000000 -0.000000 1.000000
+              anchor 0.000000 0.000000 0.025000
+            }
+            device [
+              RotationalMotor {
+                name "joint_1"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "joint_1_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0.000000 0.000000 0.025000
+              rotation 1.000000 0.000000 0.000000 1.570796
+              children [
+                Shape {
+                  appearance DEF link_1_material PBRAppearance {
+                    baseColor 0.501961 1.000000 1.000000
+                    roughness 1.000000
+                    metalness 0
+                  }
+                  geometry DEF link_1 Mesh {
+                    url "F:/cad designs/variable-dof-manipulator/sw2urdf/sw2urdf-example/meshes/link_1.STL"
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis -1.000000 0.000000 0.000000
+                    anchor 0.000000 0.170000 0.000000
+                  }
+                  device [
+                    RotationalMotor {
+                      name "joint_2"
+                      minPosition -2094395.0
+                      maxPosition 2094395.0
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "joint_2_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0.000000 0.170000 0.000000
+                    rotation 0.000000 0.366722 0.930331 3.141593
+                    children [
+                      Shape {
+                        appearance DEF link_2_material PBRAppearance {
+                          baseColor 0.501961 1.000000 1.000000
+                          roughness 1.000000
+                          metalness 0
+                        }
+                        geometry DEF link_2 Mesh {
+                          url "F:/cad designs/variable-dof-manipulator/sw2urdf/sw2urdf-example/meshes/link_2.STL"
+                        }
+                      }
+                      HingeJoint {
+                        jointParameters HingeJointParameters {
+                          axis 0.000000 -1.000000 -0.000000
+                          anchor 0.000000 -0.263119 0.000000
+                        }
+                        device [
+                          RotationalMotor {
+                            name "joint_3"
+                            maxTorque 10000
+                          }
+                          PositionSensor {
+                            name "joint_3_sensor"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation 0.000000 -0.263119 0.000000
+                          rotation -0.097082 -0.000000 -0.995276 3.141593
+                          children [
+                            Shape {
+                              appearance DEF link_3_material PBRAppearance {
+                                baseColor 0.501961 1.000000 1.000000
+                                roughness 1.000000
+                                metalness 0
+                              }
+                              geometry DEF link_3 Mesh {
+                                url "F:/cad designs/variable-dof-manipulator/sw2urdf/sw2urdf-example/meshes/link_3.STL"
+                              }
+                            }
+                            HingeJoint {
+                              jointParameters HingeJointParameters {
+                                axis -1.000000 -0.000000 0.000000
+                                anchor 0.000000 0.076881 0.000000
+                              }
+                              device [
+                                RotationalMotor {
+                                  name "joint_4"
+                                  minPosition -2094400.0
+                                  maxPosition 2094400.0
+                                  maxTorque 10000
+                                }
+                                PositionSensor {
+                                  name "joint_4_sensor"
+                                }
+                              ]
+                              endPoint Solid {
+                                translation 0.000000 0.076881 0.000000
+                                rotation 0.000000 0.000000 -1.000000 3.141593
+                                children [
+                                  Shape {
+                                    appearance DEF link_4_material PBRAppearance {
+                                      baseColor 0.501961 1.000000 1.000000
+                                      roughness 1.000000
+                                      metalness 0
+                                    }
+                                    geometry DEF link_4 Mesh {
+                                      url "F:/cad designs/variable-dof-manipulator/sw2urdf/sw2urdf-example/meshes/link_4.STL"
+                                    }
+                                  }
+                                ]
+                                name "link_4"
+                                boundingObject USE link_4
+                                physics Physics {
+                                  density -1
+                                  mass 3.210126
+                                  centerOfMass [ -0.003849 -0.090431 0.000000 ]
+                                  inertiaMatrix [
+                                    9.490862e-03 1.377070e-03 9.443300e-03
+                                    7.974696e-04 -1.029992e-18 4.174178e-18
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                          name "link_3"
+                          boundingObject USE link_3
+                          physics Physics {
+                            density -1
+                            mass 3.210126
+                            centerOfMass [ -0.003849 -0.013550 0.000000 ]
+                            inertiaMatrix [
+                              9.490862e-03 1.377070e-03 9.443300e-03
+                              7.974696e-04 5.963112e-19 -3.035766e-18
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                    name "link_2"
+                    boundingObject USE link_2
+                    physics Physics {
+                      density -1
+                      mass 3.210126
+                      centerOfMass [ -0.003849 -0.090431 -0.000000 ]
+                      inertiaMatrix [
+                        9.490862e-03 1.377070e-03 9.443300e-03
+                        7.974696e-04 5.149960e-19 -6.234162e-18
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "link_1"
+              boundingObject USE link_1
+              physics Physics {
+                density -1
+                mass 3.210126
+                centerOfMass [ -0.003849 0.079569 -0.000000 ]
+                inertiaMatrix [
+                  9.490862e-03 1.377070e-03 9.443300e-03
+                  7.974696e-04 -4.069299e-20 2.834794e-19
+                ]
+              }
+            }
+          }
+        ]
+        name "base_link"
+        boundingObject USE base_link
+        physics Physics {
+          density -1
+          mass 0.992874
+          centerOfMass [ 0.000000 0.000000 0.010999 ]
+          inertiaMatrix [
+            4.874641e-04 4.874641e-04 8.829765e-04
+            -3.238412e-20 1.982890e-36 5.611099e-20
+          ]
+        }
+      }
+    ]
+    name IS name
+  }
+}
